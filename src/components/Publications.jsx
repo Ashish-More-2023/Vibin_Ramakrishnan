@@ -121,8 +121,10 @@ const publications = [
 
 function Publications() {
   return (
-    <section className="space-y-4">
-      <h2 className="text-4xl font-bold text-gray-900">Publications</h2>
+    <section className="space-y-4 mb-10">
+       <div>
+    <h2 className="text-4xl font-bold text-gray-900">Publications</h2>
+  </div>
 
       <div className="space-y-6">
         {publications.map((pub) => (

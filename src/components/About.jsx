@@ -3,7 +3,7 @@ import React from "react";
 function About() {
   return (
     <div className="min-w-full px-20 py-6">
-      <h2 className="font-bold text-4xl pb-10">About Me</h2>
+      <h2 className="font-bold text-4xl pb-10">Academic Profile</h2>
       <p>
         Dr. Vibin Ramakrishnan is a Professor of Biosciences and Bioengineering
         at IIT Guwahati. Vibin is an associate faculty of the Mehta Family

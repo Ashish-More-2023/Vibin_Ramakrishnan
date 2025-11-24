@@ -1,139 +1,163 @@
 import React from "react";
-import CategorySection from "./Research/CategorySection";
 
-const structuredPatentData = [
+// Sample research data structure - to be fetched from AdminJS backend
+const researchData = [
   {
-    category: "International Patent",
-    items: [
+    id: 1,
+    title: "Network Medicine",
+    description:
+      "Network medicine uses computational approaches to understand disease mechanisms and identify therapeutic targets through the analysis of molecular interaction networks. Our research focuses on developing novel algorithms for drug-target interaction mapping and multi-molecular therapeutic strategies.",
+    imageUrl: "/api/images/network-medicine.jpg", // AdminJS will provide this URL
+    publications: [
       {
         title:
-          "A device for non-invasive treatment of neurodegenerative diseases.",
-        inventors:
-          "Vibin Ramakrishnan, Gaurav Pandey, Harshal B. Nemade, Jahnu Saikia, Sajitha S, & Nitin Chaudhary.",
-        patentNo: "WO/2019/012556",
-        status: "Published",
+          "Mapping drug-target interactions and synergy in multi-molecular therapeutics for pressure-overload cardiac hypertrophy",
+        authors:
+          "Aparna Rai, Vikas Kumar, Gaurav Jerath, C. C. Kartha & Vibin Ramakrishnan",
+        journal: "npj Systems Biology and Applications",
+        year: "2021",
+        doi: "10.1038/s41540-021-00171-z",
       },
     ],
   },
   {
-    category: "Indian Patents",
-    items: [
+    id: 2,
+    title: "Drug Delivery Vehicles",
+    description:
+      "Our research in drug delivery focuses on developing smart peptide-based nanostructures for targeted therapy. We explore syndiotactic peptides and stimulus-responsive materials for precise drug delivery to tumor sites and disease-affected areas.",
+    imageUrl: "/api/images/drug-delivery.jpg",
+    publications: [
       {
         title:
-          "Generation and usage of Di-Histidine based stimulus responsive nanostructures",
-        inventors:
-          "Vibin Ramakrishnan, Sajitha S, Nitin Chaudhary & Gaurav Pandey.",
-        patentNo: "243/KOL/2015",
-        date: "09.03.2015",
-        status: "Published",
+          "Delivery of Small Molecules by Syndiotactic Peptides for Breast Cancer Therapy",
+        authors:
+          "Gaurav Jerath, Pramod Darvin, Yvonne Christian, Vishal Trivedi, T. R. Santhosh Kumar and Vibin Ramakrishnan",
+        journal: "Molecular Pharmaceutics",
+        year: "2022",
+        doi: "acs.molpharmaceut.2c00238",
       },
       {
-        title: "Antimicrobial Peptides.",
-        inventors:
-          "Vibin Ramakrishnan, Prakash Kishore Hazam, Nitin Chaudhary, Vishal Trivedi and Gaurav Jerath.",
-        patentNo: "333/KOL/2015",
-        date: "26.03.2015",
-        status: "Published",
+        title: "Syndiotactic Peptides for Targeted Delivery",
+        authors:
+          "Gaurav Jerath, Ruchika Goyal, Vishal Trivedi T.R. Santhoshkumar and Vibin Ramakrishnan",
+        journal: "Acta Biomaterialia",
+        year: "2019",
+        doi: "10.1016/j.actbio.2019.01.036",
+      },
+      {
+        title:
+          "Geometry Encoded Functional Programming of Tumor Homing Peptides for Targeted Drug Delivery",
+        authors:
+          "Ruchika Goyal, Gaurav Jerath, Akhil R., Aneesh Chandrasekharan, Eswara Rao Puppala, Srikanth Ponneganti, Anupam Sarma, V.G.M. Naidu, T. R. Santhoshkumar, and Vibin Ramakrishnanan",
+        journal: "Journal of Controlled Release",
+        year: "2021",
+        doi: "10.1016/j.jconrel.2021.03.0101",
       },
     ],
   },
   {
-    category: "Computational Tools/Web servers",
-    items: [
+    id: 3,
+    title: "Bio-nano Catalysis",
+    description:
+      "Bio-nano catalysis combines biological systems with nanotechnology to create efficient catalytic materials. Our work explores anisotropic ferromagnetic organic nanostructures and their applications in various biomedical and industrial processes.",
+    imageUrl: "/api/images/bio-nano.jpg",
+    publications: [
       {
-        name: "Protein Barcode",
-        description: "Tool structure based barcoding of proteins (MID IITG)",
-        reference:
-          "Structure Based Barcoding of Proteins Rahul Metri, Gaurav Jerath, Govind Kailas, Nitin Gachhe , Adityabarna Pal & Vibin Ramakrishnan (2014) Protein Science 23:117–120",
-        status: "Active",
+        title: "Anisotropic Ferromagnetic Organic Nanoflowers",
+        authors:
+          "Sajitha Sasidharan, Sayandeep Ghosh, Rishi Sreedhar, Kalpana Kumari, Subhash Thota, and Vibin Ramakrishnanan",
+        journal: "Journal of Physical Chemistry C",
+        year: "2022",
+        doi: "10.1021/acs.jpcc.2c01462",
       },
+    ],
+  },
+  {
+    id: 4,
+    title: "Computational Biology",
+    description:
+      "Our computational biology research encompasses protein engineering, structure-based analysis, and the development of web-based tools for molecular modeling. We create accessible platforms for researchers to perform complex protein analysis and drug design studies.",
+    imageUrl: "/api/images/computational-bio.jpg",
+    publications: [
       {
-        name: "Basic Protein Engineering Toolkit (bPE Toolkit, MID IITG)",
-        description: "Consists of six useful protein modeling tools",
-        reference:
-          "bPE toolkit:Toolkit for Computational Protein Engineering Gaurav Jerath, Prakash K. Hazam and Vibin Ramakrishnan. Systems and Synthetic Biology. (2014) 8:337–341.",
-        status: "Active",
+        title:
+          "Electric Field Disrupts Amyloid Aggregation; Potential Non-invasive Therapy for Alzheimer's Disease",
+        authors:
+          "Jahnu Saikia, Gaurav Pandey, Sajitha Sasidharan, Ferrin Antony, Harshal B. Nemade, Sachin Kumar, Nitin Chaudhary, and Vibin Ramakrishnan",
+        journal: "ACS Chemical Neuroscience",
+        year: "2019",
+        doi: "10.1021/acschemneuro.8b00490",
       },
     ],
   },
 ];
 
-function Research() {
+const ResearchCard = ({ research, index }) => {
+  const isImageLeft = index % 2 === 0;
+
   return (
-    <div className="min-w-full bg-linear-to-br from-gray-50 via-blue-50/20 to-purple-50/20">
-      {/* Hero Section */}
-      <div className="relative overflow-hidden bg-linear-to-br from-indigo-600 via-purple-700 to-pink-800 text-white py-20 px-8">
-        {/* Animated background elements */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-indigo-400/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-pink-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-purple-400/20 rounded-full blur-3xl animate-pulse"></div>
-
-        <div className="relative max-w-7xl mx-auto">
-          <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-semibold mb-4 border border-white/20">
-            Innovation & Discovery
+    <div className="mb-20">
+      <div
+        className={`flex flex-col ${
+          isImageLeft ? "lg:flex-row" : "lg:flex-row-reverse"
+        } gap-8 items-center`}
+      >
+        <div className="w-full lg:w-1/2">
+          <div className="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
+            <img
+              src={research.imageUrl}
+              alt={research.title}
+              className="w-full h-96 object-cover hover:scale-105 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
           </div>
-          <h1 className="text-6xl font-bold mb-4 leading-tight">
-            Research & Patents
-          </h1>
-          <p className="text-xl text-purple-100 max-w-3xl leading-relaxed">
-            Explore our groundbreaking patents and computational tools that are
-            shaping the future of molecular medicine and biotechnology.
-          </p>
+        </div>
 
-          {/* Stats */}
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl">
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-              <div className="text-4xl font-bold mb-2">
-                {structuredPatentData.reduce(
-                  (acc, cat) => acc + cat.items.length,
-                  0
-                )}
-              </div>
-              <div className="text-purple-100 text-sm uppercase tracking-wide font-semibold">
-                Total Patents & Tools
-              </div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-              <div className="text-4xl font-bold mb-2">
-                {structuredPatentData.length}
-              </div>
-              <div className="text-purple-100 text-sm uppercase tracking-wide font-semibold">
-                Categories
-              </div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-              <div className="text-4xl font-bold mb-2">2014+</div>
-              <div className="text-purple-100 text-sm uppercase tracking-wide font-semibold">
-                Years of Innovation
-              </div>
-            </div>
+        <div className="w-full lg:w-1/2 space-y-6">
+          <div>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              {research.title}
+            </h2>
+            <p className="text-gray-700 leading-relaxed text-lg">
+              {research.description}
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="text-2xl font-semibold text-gray-800 border-b-2 border-emerald-600 pb-2 inline-block">
+              Publications
+            </h3>
+            <ul className="space-y-4 max-h-64 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-emerald-200 scrollbar-track-transparent">
+              {research.publications.map((pub, pubIndex) => (
+                <li
+                  key={pubIndex}
+                  className="bg-gray-50 p-4 rounded-lg border-l-4 border-emerald-600 hover:bg-gray-100 transition-colors duration-200"
+                >
+                  <h4 className="font-semibold text-gray-900 mb-2">
+                    {pub.title}
+                  </h4>
+                  <p className="text-sm text-gray-600 mb-1">{pub.authors}</p>
+                  <p className="text-sm text-gray-500">
+                    <span className="font-medium">{pub.journal}</span> (
+                    {pub.year}) • DOI: {pub.doi}
+                  </p>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
+    </div>
+  );
+};
 
-      {/* Main Content */}
+function Research() {
+  return (
+    <div className="min-w-full bg-gradient-to-br from-gray-50 via-slate-50 to-gray-100">
       <div className="max-w-7xl mx-auto px-8 py-16">
-        {structuredPatentData.map((categoryData, index) => (
-          <CategorySection
-            key={index}
-            categoryData={categoryData}
-            index={index}
-          />
+        {researchData.map((research, index) => (
+          <ResearchCard key={research.id} research={research} index={index} />
         ))}
-
-        {/* Call to Action */}
-        <div className="mt-16 bg-linear-to-r from-indigo-600 to-purple-700 rounded-3xl p-12 text-white shadow-2xl text-center">
-          <h3 className="text-3xl font-bold mb-4">
-            Interested in Collaboration?
-          </h3>
-          <p className="text-lg text-indigo-100 mb-6 max-w-2xl mx-auto">
-            We're always looking for opportunities to collaborate on innovative
-            research projects and technology development.
-          </p>
-          <button className="bg-white text-indigo-600 px-8 py-3 rounded-full font-bold hover:bg-indigo-50 transition-colors duration-300 shadow-lg hover:shadow-xl">
-            Get in Touch
-          </button>
-        </div>
       </div>
     </div>
   );

@@ -4,9 +4,9 @@ import profileImage from "../assets/profile.jpg";
 
 function Hero() {
   return (
-    <div className="min-w-full bg-linaer-to-br from-white via-blue-50/30 to-purple-50/30">
+    <div className="min-w-full bg-gradient-to-br from-gray-50 via-slate-50 to-gray-100">
       <div className="w-full flex items-center justify-center py-20 px-8">
-        <div className="w-84 h-84 rounded-full overflow-hidden shadow-2xl ring-4 ring-white ring-offset-4 ring-offset-blue-100">
+        <div className="w-84 h-84 rounded-full overflow-hidden shadow-2xl ring-4 ring-gray-100 ring-offset-4 ring-offset-slate-200">
           <img
             src={profileImage}
             alt="Vibin Ramakrishnan"
@@ -14,20 +14,27 @@ function Hero() {
           />
         </div>
         <div className="text pl-20 max-w-2xl">
-          <h1 className="font-bold text-5xl pb-6 text-gray-950 bg-linaer-to-r from-blue-600 to-indigo-600 bg-clip-text">
+          <h1 className="font-bold text-5xl pb-6 text-transparent bg-gradient-to-r from-gray-800 to-slate-900 bg-clip-text">
             Vibin Ramakrishnan
           </h1>
-          <div className="py-3 border-l-4 border-blue-500 pl-4 mb-4">
-            <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-1">
+          <div className="py-3 flex items-stretch gap-4 mb-4">
+            <p className="text-sm font-semibold text-gray-600 uppercase tracking-wide self-center">
               Professor
             </p>
-            <h3 className="text-xl font-semibold text-gray-800">
-              Biosciences & Bioengineering
-            </h3>
-            <h3 className="text-xl font-semibold text-gray-800">
-              Mehta Family School of Data Science & Artificial Intelligence
-            </h3>
+            <div className="w-px bg-slate-400 self-stretch"></div>
+            <div className="flex flex-col gap-1">
+              <h3 className="text-md font-semibold text-gray-800">
+                Biosciences & Bioengineering
+              </h3>
+              <h3 className="text-md font-semibold text-gray-800">
+                Mehta Family School of Data Science & Artificial Intelligence
+              </h3>
+              <h3 className="text-md font-semibold text-gray-800">
+                Example Title
+              </h3>
+            </div>
           </div>
+
           <div className="py-3 space-y-1">
             <p className="text-gray-700">
               <span className="font-semibold text-gray-900">Office:</span> 104,
@@ -37,7 +44,7 @@ function Hero() {
               <span className="font-semibold text-gray-900">Email:</span>{" "}
               <a
                 href="mailto:vibin@iitg.ac.in"
-                className="text-blue-600 hover:underline"
+                className="text-slate-700 hover:text-slate-900 hover:underline"
               >
                 vibin@iitg.ac.in
               </a>
@@ -58,13 +65,13 @@ function Hero() {
                 href="https://fac.iitg.ac.in/vibin/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-600 hover:underline"
+                className="text-slate-700 hover:text-slate-900 hover:underline"
               >
                 fac.iitg.ac.in/vibin/
               </a>
             </p>
           </div>
-          <div className="py-3 bg-linaer-to-r from-blue-50 to-indigo-50 rounded-lg px-4 border border-blue-100">
+          <div className="py-3 bg-gradient-to-r from-slate-100 to-gray-100 rounded-lg px-4 border border-slate-200">
             <p className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-2">
               Research Areas
             </p>
@@ -82,3 +89,4 @@ function Hero() {
 }
 
 export default Hero;
+  
