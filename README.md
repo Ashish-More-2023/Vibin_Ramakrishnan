@@ -22,7 +22,14 @@ Prisma ORM
 PostgreSQL
 
 --Project Structure
-<img width="523" height="253" alt="image" src="https://github.com/user-attachments/assets/6d082c93-7248-4407-a96d-5331b267f43d" />
+
+
+
+<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/6d082c93-7248-4407-a96d-5331b267f43d" />
+
+
+
+
 
 --Envs
 -frontend:
@@ -38,7 +45,17 @@ FRONTEND_URL=frontend_url
 BACKEND_URL=backend_url
 
 --Backend Setup:
+
+
+
+
 <img width="326" height="200" alt="image" src="https://github.com/user-attachments/assets/b8468712-4e5c-42c1-a145-62f04c2821e8" />
+
+
+
+
+
+
 This will:
 Install backend dependencies
 Generate Prisma client
@@ -47,7 +64,16 @@ Create the initial admin user
 Start the backend server
 
 --Frontend Setup:
+
+
+
+
 <img width="190" height="106" alt="image" src="https://github.com/user-attachments/assets/d4f588e7-1b17-47e7-a490-bb32dc3490f2" />
+
+
+
+
+
 This generates production-ready static files in the dist/ folder.
 
 --Why seed:admin
