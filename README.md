@@ -32,17 +32,17 @@ PostgreSQL
 
 
 --Envs
--frontend:
-VITE_API_URL=backend_url
+-frontend:\n
+VITE_API_URL=backend_url \n
 
--backend:
-DATABASE_URL=postgresql url
-ADMIN_EMAIL="vibin@iitg.ac.in"
-ADMIN_PASSWORD="admin123"
-SESSION_SECRET="SECRETKEY"
-PORT=5000
-FRONTEND_URL=frontend_url
-BACKEND_URL=backend_url
+-backend:\n
+DATABASE_URL=postgresql url \n
+ADMIN_EMAIL="vibin@iitg.ac.in" \n
+ADMIN_PASSWORD="admin123" \n
+SESSION_SECRET="SECRETKEY" \n
+PORT=5000 \n
+FRONTEND_URL=frontend_url \n
+BACKEND_URL=backend_url \n
 
 --Backend Setup:
 
