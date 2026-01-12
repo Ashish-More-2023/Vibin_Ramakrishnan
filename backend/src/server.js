@@ -16,6 +16,19 @@ import fs from 'fs';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const uploadsDir = path.join(__dirname, '../public/uploads');
+const tempDir = path.join(__dirname, '../public/uploads/temp');
+
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir, { recursive: true });
+  console.log('✓ Created uploads directory');
+}
+
+if (!fs.existsSync(tempDir)) {
+  fs.mkdirSync(tempDir, { recursive: true });
+  console.log('✓ Created temp directory');
+}
+
 const PORT = process.env.PORT || 5000;
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -103,8 +116,8 @@ const start = async () => {
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
-      secure: isProduction,
-      sameSite: isProduction ? 'none' : 'lax',
+      secure: false,
+      sameSite:'lax',
       maxAge: 1000 * 60 * 60 * 24,
     },
     name: 'adminjs-session'
@@ -442,8 +455,8 @@ const start = async () => {
     console.log(`Server running on port ${PORT}`);
     console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
     if (!isProduction) {
-      console.log(`Admin panel: http://localhost:${PORT}/admin`);
-      console.log(`Upload page: http://localhost:${PORT}/upload.html`);
+      console.log(`Admin panel: ${process.env.BACKEND_URL}/admin`);
+      console.log(`Upload page: ${process.env.BACKEND_URL}/upload.html`);
     }
   });
 
