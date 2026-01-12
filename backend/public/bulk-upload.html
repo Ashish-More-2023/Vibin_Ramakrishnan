@@ -282,13 +282,7 @@
           if (response.ok) {
             result.className = 'success';
             result.innerHTML = `
-              <strong> Upload Successful!</strong><br>
-              Total Processed: ${data.total}<br>
-              Success: ${data.results.success}<br>
-              Failed: ${data.results.failed}
-              ${data.results.errors.length > 0 ? '<br><br><strong>Errors:</strong><br>' + 
-                data.results.errors.map(e => `Row ${e.row}: ${e.error}`).join('<br>') : ''}
-            `;
+              <strong> Upload Successful!</strong><br>`;
           } else {
             result.className = 'error';
             result.innerHTML = `<strong> Error:</strong><br>${data.error || 'Upload failed'}`;
